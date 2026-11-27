@@ -1,0 +1,14 @@
+@startuml
+actor Покупатель
+participant "Форма оплаты" as Form
+participant "Проверка баланса" as Check
+
+Покупатель -> Form : Ввести s и p
+Form -> Check : Проверить (s, p)
+alt s ≥ p
+    Check --> Form : Оплата прошла
+else s < p
+    Check --> Form : Недостаточно средств
+end
+Form --> Покупатель : Показать результат
+@enduml
